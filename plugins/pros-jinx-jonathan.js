@@ -65,6 +65,18 @@
 
 			createWebSocket();
 		}
+
+    var refreshTimer;
+
+		function createRefreshTimer(interval) {
+			if  (refreshTimer) {
+				clearInterval(refreshTimer);
+			}
+
+			refreshTimer = setInterval(function() {
+				getData();
+			}, interval);
+		}
 	};
 
 	freeboard.loadDatasourcePlugin({
