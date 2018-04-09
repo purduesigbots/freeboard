@@ -1,7 +1,6 @@
 {
 	"version": 1,
 	"allow_edit": true,
-  "header_image" : "./img/logo.svg",
 	"plugins": [],
 	"panes": [
 		{

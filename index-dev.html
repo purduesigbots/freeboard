@@ -43,13 +43,19 @@
                 "plugins/pros-jinx-jonathan.js",
                 "plugins/plugin_json_ws.js",
                 "plugins/plugin_highcharts.js",
-                "plugins/flot_extended.plugin.js",
+                // "load-dash.js",
                 function(){
                     $(function()
                     { //DOM Ready
 						            freeboard.setAssetRoot("/freeboard-ui/");
-                        // freeboard.loadDashboardFromLocalFile("dashboard.json");
                         freeboard.initialize(true);
+
+                        // Load the Dashboard
+                        $.getJSON("./dashboard.json", function() {
+                        })
+                        .done(function(data) {
+                          freeboard.loadDashboard(data);
+                        });
                     });
                 });
     </script>

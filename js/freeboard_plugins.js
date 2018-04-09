@@ -2850,6 +2850,7 @@ var freeboard = (function()
 
 			if(freeboardLocation != "")
 			{
+        console.log("here");
 				$.ajax({
 					url    : freeboardLocation,
 					success: function(data)
