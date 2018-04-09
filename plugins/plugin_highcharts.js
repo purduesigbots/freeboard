@@ -302,6 +302,14 @@
 					trackBorderColor: '#404043'
 				},
 
+        exporting: {
+          buttons: {
+            contextButton: {
+              align: "left"
+            }
+          }
+        },
+
 				// special colors for some of the
 				legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
 				background2: '#505053',
@@ -347,7 +355,7 @@
 						data: [],
 						connectNulls: true
 					};
-					
+
 					thisWidgetSeries.push(newSeries);
 				}
 			}
@@ -361,7 +369,8 @@
 				chart: {
 					type: thisWidgetChartType,
 					animation: Highcharts.svg,
-					marginRight: 20
+					marginRight: 20,
+          zoomType: 'x' // NOTE: need to disable freeboard's desire to move the graph to do this
 				},
 				title: {
 					text: thisWidgetTitle

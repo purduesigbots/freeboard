@@ -1,6 +1,6 @@
 (function()
 {
-	var jsonWebSocketDatasource = function(settings, updateCallback)
+	var JINXDatasource = function(settings, updateCallback)
 	{
 		var self = this;
 		var currentSettings = settings;
@@ -93,7 +93,7 @@
 		],
 		newInstance: function(settings, newInstanceCallback, updateCallback)
 		{
-			newInstanceCallback( new jsonWebSocketDatasource(settings, updateCallback));
+			newInstanceCallback( new  JINXDatasource(settings, updateCallback));
 		}
 	});
 }());

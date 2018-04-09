@@ -824,7 +824,7 @@ function FreeboardUI()
 
 		if(newCols === grid.cols)
 		{
-			return false; 
+			return false;
 		}
 		else
 		{
