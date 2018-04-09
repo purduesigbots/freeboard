@@ -301,14 +301,14 @@
 					trackBackgroundColor: '#404043',
 					trackBorderColor: '#404043'
 				},
-
-        exporting: {
-          buttons: {
-            contextButton: {
-              align: "left"
-            }
-          }
-        },
+        // 
+        // exporting: {
+        //   buttons: {
+        //     contextButton: {
+        //       align: "left"
+        //     }
+        //   }
+        // },
 
 				// special colors for some of the
 				legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
