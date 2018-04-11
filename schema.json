@@ -1,0 +1,61 @@
+{
+  "motors": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "port": {
+          "type": "number"
+        },
+        "position": {
+          "type": "number"
+        },
+        "velocity": {
+          "type": "number"
+        },
+        "temperature": {
+          "type": "number"
+        },
+        "torque": {
+          "type": "number"
+        },
+        "power": {
+          "type": "number"
+        },
+        "overCurrent": {
+          "type": "number"
+        },
+        "overTemp": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  "adi": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "type": "string"
+        },
+        "value": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  "trackedVariables": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {}
+      }
+    }
+  }
+  }
+}
