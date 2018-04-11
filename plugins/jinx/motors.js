@@ -5,9 +5,9 @@
     type: "text"
   },
   {
-    name: "value",
-    display_name: "Value",
-    type: "calculated"
+    name: "port",
+    display_name: "Port",
+    type: "text"
   }];
 
   freeboard.loadWidgetPlugin({
@@ -26,11 +26,16 @@
   freeboard.addStyle('.velocity-text', "margin-top:10px;");
   var motorPlugin = function (settings) {
     var self = this;
+    settings.test = "datasources[\"Test-Data\"][\"tilt_x\"]";
+    console.log(JSON.stringify(settings));
+    var currentSettings = settings;
 
     var widgetTitleElement = $('<h2 class="section-title"></h2>');
     var widgetTitleText = "Motor Status Widget";
+    widgetTitleElement.html(widgetTitleText);
 
     var currentTextElement = $('<div class="current-text"></div>');
+    currentTextElement.html("No Data");
     var currentIndicatorElement = $('<div class="current-light"></div>');
     var currLimOnText = "Current Limited";
     var currLimOffText = "No Current Limiting";
@@ -55,26 +60,13 @@
     }
 
     this.onSettingsChanged = function (newSettings) {
-      var dataSourceAdditions = {
-        name: "value",
-        display_name: "Value",
-        type: "calculated",
-        default_value: "datasources[\"Test-Data\"][\"tilt_x\"]"
-      };
+      console.log(JSON.stringify(settings));
       currentSettings = newSettings;
-      jQuery.extend(currentSettings, dataSourceAdditions);
-      widgetTitleElement.html(widgetTitleText);
       updateState();
     }
 
     this.onCalculatedValueChanged = function (settingName, newValue) {
-      if (settingName == "value") {
-        console.log("here");
-      }
-
       isOn = Boolean(newValue);
-      // $(positionTextElement).html(newValue.tilt_y);
-      // $(velocityTextElement).html(newValue.tilt_z);
 
       updateState();
     }
@@ -85,5 +77,4 @@
       return 1;
     }
   }
-
 }());

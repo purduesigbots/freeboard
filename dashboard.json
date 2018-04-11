@@ -30,16 +30,16 @@
 		},
 		{
 			"title": "Graphed User Data",
-			"width": 1,
+			"width": 2,
 			"row": {
 				"2": 5,
 				"3": 1,
 				"4": 1
 			},
 			"col": {
-				"2": 1,
-				"3": 1,
-				"4": 1
+				"2": 2,
+				"3": 3,
+				"4": 3
 			},
 			"col_width": 2,
 			"widgets": [
