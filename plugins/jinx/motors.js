@@ -5,76 +5,83 @@
   freeboard.addStyle('.position-text', "margin-top:10px;");
   freeboard.addStyle('.velocity-text', "margin-top:10px;");
   var motorPlugin = function (settings) {
-      var self = this;
-      var widgetTitleElement = $('<h2 class="section-title"></h2>');
-      var widgetTitleText = "Motor Status Widget";
+    var self = this;
 
-      var currentTextElement = $('<div class="current-text"></div>');
-      var currentIndicatorElement = $('<div class="current-light"></div>');
-      var currentSettings = settings;
-      var currLimOnText = "Current Limited";
-      var currLimOffText = "No Current Limiting";
-      var isOn = false;
+    var widgetTitleElement = $('<h2 class="section-title"></h2>');
+    var widgetTitleText = "Motor Status Widget";
 
-      var positionTextElement = $('<div class="position-text"></div>');
-      var velocityTextElement = $('<div class="velocity-text"></div>');
+    var currentTextElement = $('<div class="current-text"></div>');
+    var currentIndicatorElement = $('<div class="current-light"></div>');
+    var currentSettings = settings;
+    var currLimOnText = "Current Limited";
+    var currLimOffText = "No Current Limiting";
+    var isOn = false;
 
-      function updateState() {
-          currentIndicatorElement.toggleClass("on", isOn);
+    var positionTextElement = $('<div class="position-text"></div>');
+    var velocityTextElement = $('<div class="velocity-text"></div>');
 
-          if (isOn) {
-              currentTextElement.text(currLimOnText);
-          }
-          else {
-              currentTextElement.text(currLimOffText);
-          }
+    function updateState() {
+      currentIndicatorElement.toggleClass("on", isOn);
+
+      if (isOn) {
+        currentTextElement.text(currLimOnText);
       }
-
-      this.render = function (element) {
-          $(element).append(widgetTitleElement).append(currentIndicatorElement).append(currentTextElement).append(positionTextElement).append(velocityTextElement);
+      else {
+        currentTextElement.text(currLimOffText);
       }
+    }
 
-      this.onSettingsChanged = function (newSettings) {
-          currentSettings = newSettings;
-          widgetTitleElement.html(widgetTitleText);
-          updateState();
-      }
+    this.render = function (element) {
+      $(element).append(widgetTitleElement).append(currentIndicatorElement).append(currentTextElement).append(positionTextElement).append(velocityTextElement);
+    }
 
-      this.onCalculatedValueChanged = function (settingName, newValue) {
-          isOn = Boolean(newValue);
-          // $(positionTextElement).html(newValue.tilt_y);
-          // $(velocityTextElement).html(newValue.tilt_z);
+    this.onSettingsChanged = function (newSettings) {
+      currentSettings = newSettings;
+      widgetTitleElement.html(widgetTitleText);
+      updateState();
+    }
 
-          updateState();
-      }
+    this.onCalculatedValueChanged = function (settingName, newValue) {
+      isOn = Boolean(newValue);
+      // $(positionTextElement).html(newValue.tilt_y);
+      // $(velocityTextElement).html(newValue.tilt_z);
 
-      this.onDispose = function () {
-      }
+      updateState();
+    }
 
-      this.getHeight = function () {
-          return 1;
-      }
+    this.onDispose = function () {}
 
-      this.onSettingsChanged(settings);
+    this.getHeight = function () {
+      return 1;
+    }
+
+    this.onSettingsChanged(settings);
   };
 
   freeboard.loadWidgetPlugin({
-      type_name: "motor_plugin",
-      display_name: "Motor Plugin",
-      settings: [
-        {
-            name: "title",
-            display_name: "Title",
-            type: "text"
-        },
-        {
-            name: "value",
-            display_name: "Value",
-            type: "calculated"
-        }
-      ],
-      newInstance: function (settings, newInstanceCallback) {
-          newInstanceCallback(new motorPlugin(settings));
-      }
+    type_name: "motor_plugin",
+    display_name: "Motor Plugin",
+    settings: [
+    {
+      name: "title",
+      display_name: "Title",
+      type: "text"
+    },
+    {
+      name: "value",
+      display_name: "Value",
+      type: "calculated"
+    }
+    ],
+    newInstance: function (settings, newInstanceCallback) {
+      // var data = {
+  		// 	"name": "test",
+  		// 	"display_name": "test",
+  		// 	"type": "calculated",
+      //   "default_value": "datasources[\"Test-Data\"][\"tilt_x\"]"
+  		// };
+      // settings.push(data);
+      newInstanceCallback(new motorPlugin(settings));
+    }
   });
 }());
