@@ -1,4 +1,24 @@
 (function () {
+  var motorWidgetSettings = [{
+    name: "title",
+    display_name: "Title",
+    type: "text"
+  },
+  {
+    name: "value",
+    display_name: "Value",
+    type: "calculated"
+  }];
+
+  freeboard.loadWidgetPlugin({
+    type_name: "motor_plugin",
+    display_name: "Motor Plugin",
+    settings: motorWidgetSettings,
+    newInstance: function (settings, newInstanceCallback) {
+      newInstanceCallback(new motorPlugin(settings));
+    }
+  });
+
   freeboard.addStyle('.current-light', "border-radius:50%;width:22px;height:22px;border:2px solid #3d3d3d;margin-top:5px;float:left;background-color:#222;margin-right:10px;");
   freeboard.addStyle('.current-light.on', "background-color:#FFC773;box-shadow: 0px 0px 15px #FF9900;border-color:#FDF1DF;");
   freeboard.addStyle('.current-text', "margin-top:10px;");
@@ -12,7 +32,6 @@
 
     var currentTextElement = $('<div class="current-text"></div>');
     var currentIndicatorElement = $('<div class="current-light"></div>');
-    var currentSettings = settings;
     var currLimOnText = "Current Limited";
     var currLimOffText = "No Current Limiting";
     var isOn = false;
@@ -36,12 +55,23 @@
     }
 
     this.onSettingsChanged = function (newSettings) {
+      var dataSourceAdditions = {
+        name: "value",
+        display_name: "Value",
+        type: "calculated",
+        default_value: "datasources[\"Test-Data\"][\"tilt_x\"]"
+      };
       currentSettings = newSettings;
+      jQuery.extend(currentSettings, dataSourceAdditions);
       widgetTitleElement.html(widgetTitleText);
       updateState();
     }
 
     this.onCalculatedValueChanged = function (settingName, newValue) {
+      if (settingName == "value") {
+        console.log("here");
+      }
+
       isOn = Boolean(newValue);
       // $(positionTextElement).html(newValue.tilt_y);
       // $(velocityTextElement).html(newValue.tilt_z);
@@ -54,34 +84,6 @@
     this.getHeight = function () {
       return 1;
     }
+  }
 
-    this.onSettingsChanged(settings);
-  };
-
-  freeboard.loadWidgetPlugin({
-    type_name: "motor_plugin",
-    display_name: "Motor Plugin",
-    settings: [
-    {
-      name: "title",
-      display_name: "Title",
-      type: "text"
-    },
-    {
-      name: "value",
-      display_name: "Value",
-      type: "calculated"
-    }
-    ],
-    newInstance: function (settings, newInstanceCallback) {
-      // var data = {
-  		// 	"name": "test",
-  		// 	"display_name": "test",
-  		// 	"type": "calculated",
-      //   "default_value": "datasources[\"Test-Data\"][\"tilt_x\"]"
-  		// };
-      // settings.push(data);
-      newInstanceCallback(new motorPlugin(settings));
-    }
-  });
 }());
