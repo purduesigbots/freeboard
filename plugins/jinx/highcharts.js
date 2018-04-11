@@ -301,14 +301,14 @@
 					trackBackgroundColor: '#404043',
 					trackBorderColor: '#404043'
 				},
-        // 
-        // exporting: {
-        //   buttons: {
-        //     contextButton: {
-        //       align: "left"
-        //     }
-        //   }
-        // },
+
+        exporting: {
+          buttons: {
+            contextButton: {
+              verticalAlign: "bottom"
+            }
+          }
+        },
 
 				// special colors for some of the
 				legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -326,7 +326,6 @@
 			var thisWidgetYAxis = JSON.parse(currentSettings.yaxis);
 			var thisWidgetTitle = currentSettings.title;
 			var thisWidgetChartType = currentSettings.chartType;
-			//console.log('chartType:' + currentSettings.chartType + ' ' + thisWidgetChartType);
 			var thisWidgetSeries = [];
 
 			for (i = 1; i <= MAX_NUM_SERIES; i++) {
@@ -423,8 +422,6 @@
 		}
 
 		self.onCalculatedValueChanged = function(settingName, newValue) {
-			// console.log(settingName, 'newValue:', newValue);
-
 			var chart = thisWidgetContainer.highcharts();
 			var series = chart.get(settingName);
 			if (series) {
@@ -437,13 +434,9 @@
 				if (series.data.length > 1) {
 
 					var first = series.data[0].x;
-					//var last = series.data[series.data.length-1].x;
 					var last = new Date().getTime();
 					// Check if time frame is complete
 					var diff = last - first;
-					//                                         console.log('last :', last);
-					//                                         console.log('first:', first);
-					//                                         console.log('diff :', diff);
 
 					if (last - first > timeframeMS) {
 						shift = true;
@@ -452,7 +445,6 @@
 
 				if (isNumber(newValue)) { //check if it is a real number and not text
 					var x = (new Date()).getTime();
-					// console.log('addPoint:', x,currentSettings[seriesno], Number(newValue));
 					var plotMqtt = [x, Number(newValue)]; //create the array+ "Y"
 					series.addPoint(plotMqtt, true, shift);
 				};

@@ -48,16 +48,25 @@
 					"settings": {
 						"timeframe": 60,
 						"blocks": 4,
-						"chartType": "area",
+						"chartType": "spline",
 						"xaxis": "{\"title\":{\"text\" : \"Time\"}, \"type\": \"datetime\", \"floor\":0}",
 						"yaxis": "{\"title\":{\"text\" : \"Values\"}, \"minorTickInterval\":\"auto\", \"floor\":0}",
-						"series1": "datasources[\"JINX Data\"]"
+						"series1": "datasources[\"Test-Data\"][\"tilt_x\"]",
+						"series2": "datasources[\"Test-Data\"][\"tilt_y\"]",
+						"series3": "datasources[\"Test-Data\"][\"tilt_z\"]"
 					}
 				}
 			]
 		}
 	],
 	"datasources": [
+    {
+			"name": "Test-Data",
+			"type": "dweet_io",
+			"settings": {
+				"thing_id": "alive-pencil"
+			}
+		},
 		{
 			"name": "JINX Data",
 			"type": "PROS_JINX_Data",
