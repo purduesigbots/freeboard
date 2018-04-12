@@ -8,25 +8,46 @@
           "type": "number"
         },
         "position": {
-          "type": "number"
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
         },
         "velocity": {
-          "type": "number"
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
         },
         "temperature": {
-          "type": "number"
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
         },
         "torque": {
-          "type": "number"
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
         },
         "power": {
-          "type": "number"
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
         },
         "overCurrent": {
-          "type": "number"
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
         },
         "overTemp": {
-          "type": "number"
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
         }
       }
     }
@@ -40,7 +61,10 @@
           "type": "string"
         },
         "value": {
-          "type": "number"
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
         }
       }
     }
@@ -53,7 +77,10 @@
         "name": {
           "type": "string"
         },
-        "value": {}
+        "value": {
+          "type": "array",
+          "items": {}
+        }
       }
     }
   }

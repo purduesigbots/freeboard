@@ -89,7 +89,7 @@
 	freeboard
 		.loadWidgetPlugin({
 			"type_name": "highcharts-timeseries",
-			"display_name": "Time series (Highcharts)",
+			"display_name": "Line Graph",
 			"description": "Time series line chart.",
 			"external_scripts": [
 				"https://code.highcharts.com/highcharts.js",

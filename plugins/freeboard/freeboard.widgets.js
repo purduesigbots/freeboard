@@ -47,7 +47,7 @@
             $(textElement).text(newValue);
         }
     }
-
+  /*
 	function addSparklineLegend(element, legend) {
 		var legendElt = $("<div class='sparkline-legend'></div>");
 		for(var i=0; i<legend.length; i++) {
@@ -126,7 +126,7 @@
 			composite = true;
 		});
 	}
-
+*/
 	var valueStyle = freeboard.getStyleString("values");
 
 	freeboard.addStyle('.widget-big-text', valueStyle + "font-size:75px;");
@@ -326,11 +326,11 @@
                 display_name: "Value",
                 type: "calculated"
             },
-            {
-                name: "sparkline",
-                display_name: "Include Sparkline",
-                type: "boolean"
-            },
+            // {
+            //     name: "sparkline",
+            //     display_name: "Include Sparkline",
+            //     type: "boolean"
+            // },
             {
                 name: "animate",
                 display_name: "Animate Value Changes",
@@ -457,7 +457,7 @@
         }
     });
 
-
+/*
 	freeboard.addStyle('.sparkline', "width:100%;height: 75px;");
     var sparklineWidget = function (settings) {
         var self = this;
@@ -541,7 +541,7 @@
             newInstanceCallback(new sparklineWidget(settings));
         }
     });
-
+*/
 	freeboard.addStyle('div.pointer-value', "position:absolute;height:95px;margin: auto;top: 0px;bottom: 0px;width: 100%;text-align:center;");
     var pointerWidget = function (settings) {
         var self = this;
@@ -617,7 +617,7 @@
 
         this.onSettingsChanged(settings);
     };
-
+/*
     freeboard.loadWidgetPlugin({
         type_name: "pointer",
         display_name: "Pointer",
@@ -742,7 +742,7 @@
             newInstanceCallback(new pictureWidget(settings));
         }
     });
-
+*/
 	freeboard.addStyle('.indicator-light', "border-radius:50%;width:22px;height:22px;border:2px solid #3d3d3d;margin-top:5px;float:left;background-color:#222;margin-right:10px;");
 	freeboard.addStyle('.indicator-light.on', "background-color:#FFC773;box-shadow: 0px 0px 15px #FF9900;border-color:#FDF1DF;");
 	freeboard.addStyle('.indicator-text', "margin-top:10px;");
@@ -830,7 +830,7 @@
             newInstanceCallback(new indicatorWidget(settings));
         }
     });
-
+/*
     freeboard.addStyle('.gm-style-cc a', "text-shadow:none;");
 
     var googleMapWidget = function (settings) {
@@ -1044,5 +1044,5 @@
             newInstanceCallback(new htmlWidget(settings));
         }
     });
-
+*/
 }());

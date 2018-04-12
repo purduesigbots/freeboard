@@ -11,8 +11,8 @@
   }];
 
   freeboard.loadWidgetPlugin({
-    type_name: "motor_plugin",
-    display_name: "Motor Plugin",
+    type_name: "motor_widget",
+    display_name: "Motor Widget",
     settings: motorWidgetSettings,
     newInstance: function (settings, newInstanceCallback) {
       newInstanceCallback(new motorPlugin(settings));

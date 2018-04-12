@@ -36,13 +36,14 @@
                 "lib/js/freeboard/freeboard.js",
 
                 "plugins/freeboard/freeboard.datasources.js",
-                "plugins/freeboard/freeboard.widgets.js",
-                "examples/plugin_example.js",
-
-                // *** Load more plugins here ***
                 "plugins/jinx/datasource.js",
+
+                // Load JINX plugins first to get them higher in the type list
                 "plugins/jinx/highcharts.js",
                 "plugins/jinx/motors.js",
+
+                "plugins/freeboard/freeboard.widgets.js",  
+
                 function(){
                     $(function()
                     { //DOM Ready
