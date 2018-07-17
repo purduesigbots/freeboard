@@ -20,7 +20,7 @@
 		{
 			var data=event.data;
 
-			console.info("WebSocket received %s",data);
+			// console.info("WebSocket received %s",data);
 
 			var objdata=JSON.parse(data);
 
@@ -37,7 +37,9 @@
 
 		function createWebSocket()
 		{
-			if(ws) ws.close();
+      if (ws) {
+        if(ws.readyState === 1) return;
+      }
 
 			var url=currentSettings.url;
 			ws=new WebSocket(url);
@@ -46,8 +48,6 @@
 			ws.onclose=onClose;
 			ws.onmessage=onMessage;
 		}
-
-		createWebSocket();
 
 		this.updateNow = function()
 		{
@@ -67,16 +67,17 @@
 		}
 
     var refreshTimer;
-
-		function createRefreshTimer(interval) {
-			if  (refreshTimer) {
+    function createRefreshTimer() {
+      if(refreshTimer) {
 				clearInterval(refreshTimer);
 			}
 
-			refreshTimer = setInterval(function() {
-				getData();
-			}, interval);
-		}
+			refreshTimer = setInterval(createWebSocket, 1000);
+    }
+
+    createRefreshTimer();
+
+    createWebSocket();
 	};
 
 	freeboard.loadDatasourcePlugin({
@@ -86,9 +87,9 @@
 		settings   : [
 			{
 				name        : "url",
-				display_name: "port",
+				display_name: "port (9001 is used by the CLI)",
 				type        : "text",
-        default_value: "ws://localhost:9001"
+        default_value: "wss://localhost:9001"
 			}
 		],
 		newInstance: function(settings, newInstanceCallback, updateCallback)
